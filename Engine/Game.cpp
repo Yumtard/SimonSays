@@ -26,6 +26,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd )
 {
+	
 }
 
 void Game::Go()
@@ -38,8 +39,83 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	playField.Update();
+
+	switch (state)
+	{
+	case notStarted:
+		if (wnd.mouse.LeftIsPressed())
+		{
+			simon.AddMove();
+			state = computer;
+		}
+		break;
+
+	case player1:
+		playField.UpdateTimer();
+		if (playField.TimeOver())
+		{
+			newGameCounter = 0;
+			state = newGame;
+		}
+
+		if (player.UserInput(wnd.mouse, playField, seqSize))
+		{
+			if (IsMatch())
+			{
+				seqSize++;
+				simon.AddMove();
+				state = computer;
+			}
+			else
+			{
+				newGameCounter = 0;
+				state = newGame;
+			}
+		}
+		break;
+
+	case computer:
+		if (pauseCounter++ >= pause)
+		{
+			if (simon.DisplaySeq(playField, seqSize))
+			{
+				pauseCounter = 0;
+				player.Reset();
+				playField.Reset();
+				state = player1;
+			}
+		}
+		break;
+		
+	case newGame:
+		if (newGameCounter++ >= startNewGame)
+		{
+			seqSize = 1;
+			playField.Reset();
+			playField.ResetTimer();
+			simon.Reset();
+			simon.AddMove();
+			state = computer;
+		}
+		break;
+	}
 }
+
+bool Game::IsMatch()
+{
+	for (int i = 0; i < seqSize; i++)
+	{
+		if (player.GetChoices()[i] != simon.Getchoices()[i])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 
 void Game::ComposeFrame()
 {
+	playField.Draw(gfx);
 }

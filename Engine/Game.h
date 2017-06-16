@@ -23,6 +23,11 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include <vector>
+#include "Simon.h"
+#include "Player.h"
+#include "PlayField.h"
+
 
 class Game
 {
@@ -36,11 +41,25 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	bool IsMatch();
 	/********************************/
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	enum State
+	{
+		notStarted, player1, computer, newGame
+	};
+	State state = notStarted;
+	Simon simon;
+	PlayField playField;
+	Player player;
+	int seqSize = 1;
+	int pauseCounter = 0;
+	static constexpr int pause = 60;
+	int newGameCounter = 0;
+	static constexpr int startNewGame = 90;
 	/********************************/
 };
