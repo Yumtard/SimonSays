@@ -3,8 +3,8 @@
 TextManager::TextManager()
 	:
 	firstNumber(600, 490, Text::Order::first),
-	secondNumber(630, 490, Text::Order::second),
-	thirdNumber(660, 490, Text::Order::third)
+	secondNumber(635, 490, Text::Order::second),
+	thirdNumber(670, 490, Text::Order::third)
 {
 }
 
