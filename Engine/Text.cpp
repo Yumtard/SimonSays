@@ -61,34 +61,13 @@ void Text::Draw(Graphics & gfx, int score)
 	{
 		DrawNumber(gfx);
 	}
-	else if (score < 100)
+	else if (score < 100 && order == first || order == second)
 	{
-		switch (order)
-		{
-		case first:
-			//drawnumber() based on value
-			break;
-		case second:
-			//drawnumber() based on value
-			break;
-		default:
-			break;
-		}
+		DrawNumber(gfx);
 	}
-	else
+	else if (score >= 100)
 	{
-		switch (order)
-		{
-		case first:
-			//drawnumber() based on value
-			break;
-		case second:
-			//drawnumber() based on value
-			break;
-		case third:
-			//drawnumber() based on value
-			break;
-		}
+		DrawNumber(gfx);
 	}
 }
 
