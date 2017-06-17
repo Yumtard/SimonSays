@@ -327,6 +327,13 @@ void Graphics::DrawRect(int x, int y, int width, int height, Color c)
 	}
 }
 
+void Graphics::PutBigPixel(int x, int x_off, int y, int y_off, Color c)
+{
+	const int dim = 10;
+	const int padding = 1;
+	DrawRect(x + ((dim + padding) * x_off), y + ((dim + padding) * y_off), dim, dim, c);
+}
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception
