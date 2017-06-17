@@ -24,7 +24,10 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	firstScore(600, 490, Text::Order::first),
+	secondScore(630, 490, Text::Order::second),
+	thirdScore(660, 490, Text::Order::third)
 {
 	
 }
@@ -40,6 +43,9 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	playField.Update();
+	firstScore.Update(seqSize);
+	secondScore.Update(seqSize);
+	thirdScore.Update(seqSize);
 
 	switch (state)
 	{
@@ -118,4 +124,7 @@ bool Game::IsMatch()
 void Game::ComposeFrame()
 {
 	playField.Draw(gfx);
+	firstScore.Draw(gfx, seqSize);
+	secondScore.Draw(gfx, seqSize);
+	thirdScore.Draw(gfx, seqSize);
 }

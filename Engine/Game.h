@@ -27,6 +27,7 @@
 #include "Simon.h"
 #include "Player.h"
 #include "PlayField.h"
+#include "Text.h"
 
 
 class Game
@@ -61,5 +62,8 @@ private:
 	static constexpr int pause = 60;
 	int newGameCounter = 0;
 	static constexpr int startNewGame = 90;
+	Text firstScore;
+	Text secondScore;
+	Text thirdScore;
 	/********************************/
 };

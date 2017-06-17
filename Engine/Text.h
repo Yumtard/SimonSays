@@ -18,9 +18,8 @@ public:
 private:
 	int x;
 	int y;
-	int value = 0;
-	int padding = 1;
-	int dim = 10;
+	int value;
 	Order order;
+	Color color = Colors::Green;
 };
 
