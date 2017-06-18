@@ -61,7 +61,11 @@ void Text::Draw(Graphics & gfx, int score)
 	{
 		DrawNumber(gfx);
 	}
-	else if (score < 100 && order == first || order == second)
+	else if (score < 100 && order == first)
+	{
+		DrawNumber(gfx);
+	}
+	else if (score > 9 && order == second)
 	{
 		DrawNumber(gfx);
 	}
@@ -277,3 +281,4 @@ void Text::DrawNumber(Graphics & gfx)
 		break;
 	}
 }
+

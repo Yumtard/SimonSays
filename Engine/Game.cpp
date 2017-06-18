@@ -94,7 +94,6 @@ void Game::UpdateModel()
 			seqSize = 1;
 			playField.Reset();
 			playField.ResetTimer();
-			simon.Reset();
 			simon.AddMove();
 			state = computer;
 		}

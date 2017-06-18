@@ -21,3 +21,4 @@ void TextManager::Draw(Graphics & gfx, int score)
 	secondNumber.Draw(gfx, score);
 	thirdNumber.Draw(gfx, score);
 }
+
